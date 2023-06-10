@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",   // 指定生成哪个模块系统代码
+        "esModuleInterop": true,
+        "target": "ES2020",        // 目标代码类型
+        "noImplicitAny": true, // 在表达式和声明上有隐含的'any'类型时报错。
+        "moduleResolution": "node",
+        "sourceMap": false,     // 用于debug   
+        // "inlineSourceMap": true, // 行内sourceMap
+        "rootDir":"./src",      // 仅用来控制输出的目录结构--outDir。
+        "outDir":"./dist",     // 重定向输出目录。   
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true
+    },
+    "include":[
+        "./src/**/*"
+    ],
+    "exclude":[]
+}
