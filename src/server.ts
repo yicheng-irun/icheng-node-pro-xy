@@ -4,9 +4,9 @@ import { createWSServer } from './utils/ws-server'
 console.log('server')
 
 async function main () {
-  await createProxyServer(18080)
+  await createProxyServer(18888)
   console.log('本地httpProxy启动成功')
-  await createWSServer(8800, 18080)
+  await createWSServer(8800, 18888)
   console.log('websocket server 启动成功')
 }
 

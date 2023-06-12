@@ -71,7 +71,7 @@ export async function createProxyServer (port = 18080): Promise<void> {
       .on('request', request)
       .on('connect', connect)
       .on('error', reject)
-      .listen(port, 'localhost', () => {
+      .listen(port, '0.0.0.0', () => {
         console.log(`proxy server listen in ${port}`)
         resolve(undefined)
       })
