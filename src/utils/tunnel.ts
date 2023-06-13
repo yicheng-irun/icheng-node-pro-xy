@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { type Server } from 'http'
 import net from 'net'
 import WebSocket from 'ws'
 
 export const toWebSocket = (fromPort: number, toAddr: string) => {
   const server = net.createServer(c => {
     const ws = new WebSocket(toAddr)
-
-    console.log('start')
-
+    console.log('connect')
     ws.on('close', () => c.destroy())
 
     ws.on('error', () => c.destroy())
@@ -80,6 +79,17 @@ export const toTCPOnConnection = (ws: WebSocket, toPort: number, toHost: string)
     console.log('client on data')
     ws.send(data)
   })
+}
+
+export const toTCPOnServer = ({ server, path = '/ws-ttt', toHost, toPort }: {
+  server: Server
+  path?: string
+  toPort: number
+  toHost: string
+}) => {
+  const wss = new WebSocket.WebSocketServer({ server, path })
+  wss.on('connection', ws => { toTCPOnConnection(ws, toPort, toHost) })
+  return wss
 }
 
 export const toTCP = (fromPort: number, toPort: number, toHost: string) => {

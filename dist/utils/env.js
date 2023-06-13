@@ -1,16 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getEnvInt = exports.getEnvString = void 0;
 /**
  * 从环境变量中获取一个值
  * @param name 环境变量名
  * @param defaultValue 默认值
  */
-export function getEnvString(name, fallback) {
+function getEnvString(name, fallback) {
     const result = process.env[name] ?? fallback;
     if (result === undefined) {
         throw new Error(`请配置环境变量 ${name}`);
     }
     return result;
 }
-export function getEnvInt(envName, fallback) {
+exports.getEnvString = getEnvString;
+function getEnvInt(envName, fallback) {
     const envValue = process.env[envName];
     if (envValue) {
         const envValueNumber = Number.parseInt(envValue, 10);
@@ -23,3 +27,4 @@ export function getEnvInt(envName, fallback) {
         throw new Error(`请配置环境变量 ${envName}`);
     return fallback;
 }
+exports.getEnvInt = getEnvInt;
