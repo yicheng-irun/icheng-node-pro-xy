@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.main = void 0;
 const env_1 = require("./utils/env");
+const get_ip_1 = require("./utils/get-ip");
 const tunnel_1 = require("./utils/tunnel");
 console.log('local');
 async function main() {
@@ -11,6 +12,9 @@ async function main() {
     const server = (0, tunnel_1.toWebSocket)(18080, wsUrl);
     server.on('listening', () => {
         console.log('local listening in 18080');
+        console.log((0, get_ip_1.getMyIpList)().map((t) => {
+            return `${t}:18080`;
+        }));
     });
 }
 exports.main = main;

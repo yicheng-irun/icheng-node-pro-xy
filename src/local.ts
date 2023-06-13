@@ -1,4 +1,5 @@
 import { getEnvString } from './utils/env'
+import { getMyIpList } from './utils/get-ip'
 import { toWebSocket } from './utils/tunnel'
 console.log('local')
 
@@ -9,6 +10,9 @@ export async function main () {
   const server = toWebSocket(18080, wsUrl)
   server.on('listening', () => {
     console.log('local listening in 18080')
+    console.log(getMyIpList().map((t) => {
+      return `${t}:18080`
+    }))
   })
 }
 
