@@ -1,5 +1,8 @@
 import { networkInterfaces } from 'os'
 
+/**
+ * 获取本机IP
+ */
 export function getMyIpList () {
   const ip: string[] = []
   const interfaces = networkInterfaces()
